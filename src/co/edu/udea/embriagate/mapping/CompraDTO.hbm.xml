@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/12/2015 10:29:12 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.embriagate.dto.CompraDTO" table="compras">
+        <id name="numeroCompra" type="java.lang.Long">
+            <column name="NumeroCompra" precision="12" />
+            <generator class="assigned" />
+        </id>
+        <property name="fechaVenta" type="java.util.Date">
+            <column name="FechaVenta" not-null="true"/>
+        </property>
+        <property name="valor" type="java.lang.Long">
+            <column name="Valor" precision="40" not-null="true"/>
+        </property>
+        <many-to-one name="usuario" class="co.edu.udea.embriagate.dto.UsuarioDTO" fetch="join">
+            <column name="Usuario" length="15" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

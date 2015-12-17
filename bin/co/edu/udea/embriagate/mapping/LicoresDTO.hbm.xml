@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/12/2015 01:15:20 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.embriagate.dto.LicoresDTO" table="licores">
+        <id name="codigo" type="java.lang.String">
+            <column name="Codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="Nombre" />
+        </property>
+        <property name="fabricante" type="java.lang.String">
+            <column name="Fabricante" />
+        </property>
+        <property name="presentacion" type="java.lang.Long">
+            <column name="Presentacion" />
+        </property>
+        <property name="existencias" type="java.lang.Long">
+            <column name="Existencias" />
+        </property>
+        <property name="añejamiento" type="int">
+            <column name="Añejamiento" />
+        </property>
+        <many-to-one name="tipoLicor" class="co.edu.udea.embriagate.dto.TipoLicoresDTO" fetch="join">
+            <column name="TipoLicor" />
+        </many-to-one>
+        <property name="precio" type="java.lang.Long">
+            <column name="Precio" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/12/2015 10:55:23 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.embriagate.dto.LicoresPorVentaDTO" table="licoresPorVenta">
+        <id name="numeroItem" type="java.lang.Long">
+            <column name="NumeroItem" precision="12"/>
+            <generator class="assigned" />
+        </id>
+        <property name="cantidad" type="java.lang.Long">
+            <column name="Cantidad" precision="10" not-null="true"/>
+        </property>
+        <many-to-one name="venta" class="co.edu.udea.embriagate.dto.VentaDTO" fetch="join">
+            <column name="Venta" precision="12" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="licor" class="co.edu.udea.embriagate.dto.LicoresDTO" fetch="join">
+            <column name="Licor" length="20" not-null="true"/>
+        </many-to-one>
+        <property name="precio" type="java.lang.Long">
+            <column name="Precio" precision="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

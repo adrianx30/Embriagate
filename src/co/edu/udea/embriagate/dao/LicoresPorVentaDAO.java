@@ -1,0 +1,22 @@
+package co.edu.udea.embriagate.dao;
+
+import java.util.List;
+
+import co.edu.udea.embriagate.dto.LicoresDTO;
+import co.edu.udea.embriagate.dto.LicoresPorVentaDTO;
+import co.edu.udea.embriagate.dto.VentaDTO;
+import co.edu.udea.embriagate.exception.MyException;
+
+//Intefaz para licores por venta
+public interface LicoresPorVentaDAO {
+	
+		//Método para crear un LicoresPorVenta
+		public void crearLicoresPorCompra(LicoresPorVentaDTO licor)throws MyException;
+		
+		//Método para obtener licoresPorVenta dada una venta
+		public List<LicoresPorVentaDTO> obtenerPorCompra(VentaDTO compra)throws MyException;
+		
+		//método para obtener LicoresPorVenta dado un Licor
+		public List<LicoresPorVentaDTO> obtenerPorLicor(LicoresDTO licor)throws MyException;
+
+}
