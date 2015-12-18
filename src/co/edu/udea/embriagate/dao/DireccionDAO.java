@@ -13,6 +13,10 @@ public interface DireccionDAO {
 	
 	public void eliminar(DireccionDTO direccion) throws MyException; //Método para eliminar una direccion
 	
+	public void modificar(DireccionDTO direccion) throws MyException; //Método para modificar una direccion
+	
 	public List<DireccionDTO> consultar(ClienteDTO cliente) throws MyException; ////Método para consultar las direcciones dado un cliente
 
+	public void seleccionarComoPreferida(DireccionDTO direccion) throws MyException; //Método para seleccionar una direccion como preferida
+	
 }

@@ -19,7 +19,7 @@
             <column name="telefono" not-null="true" length="45"/>
         </property>
         <property name="ciudad" type="java.lang.String">
-            <column name="Ciudad" not-null="true" length="12" />
+            <column name="Ciudad" not-null="true" length="100" />
         </property>
         <property name="preferida" type="boolean">
             <column name="Preferida" />

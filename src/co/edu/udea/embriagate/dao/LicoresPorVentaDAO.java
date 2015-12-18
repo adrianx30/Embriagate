@@ -11,10 +11,10 @@ import co.edu.udea.embriagate.exception.MyException;
 public interface LicoresPorVentaDAO {
 	
 		//Método para crear un LicoresPorVenta
-		public void crearLicoresPorCompra(LicoresPorVentaDTO licor)throws MyException;
+		public void crearLicoresPorVenta(LicoresPorVentaDTO licor)throws MyException;
 		
 		//Método para obtener licoresPorVenta dada una venta
-		public List<LicoresPorVentaDTO> obtenerPorCompra(VentaDTO compra)throws MyException;
+		public List<LicoresPorVentaDTO> obtenerPorVenta(VentaDTO venta)throws MyException;
 		
 		//método para obtener LicoresPorVenta dado un Licor
 		public List<LicoresPorVentaDTO> obtenerPorLicor(LicoresDTO licor)throws MyException;
