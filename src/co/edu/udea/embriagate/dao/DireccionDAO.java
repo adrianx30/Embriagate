@@ -17,6 +17,8 @@ public interface DireccionDAO {
 	
 	public List<DireccionDTO> consultar(ClienteDTO cliente) throws MyException; ////Método para consultar las direcciones dado un cliente
 
+	public DireccionDTO consultarPreferida(ClienteDTO cliente) throws MyException; //Método para consultar la direccion preferida de un cliente
+	
 	public void seleccionarComoPreferida(DireccionDTO direccion) throws MyException; //Método para seleccionar una direccion como preferida
 	
 }

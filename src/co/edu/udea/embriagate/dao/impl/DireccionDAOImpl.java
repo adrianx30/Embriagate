@@ -170,6 +170,13 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 		return direcciones;
 	}
 
+	
+	/**
+	 * Modifica en la base de datos la direccion preferida de un cliente
+	 * @param cliente ClienteDTO que representa el cliente del cual se desea consultar sus direcciones
+	 * @return DireccionDTO retorna una lista de direcciones que corresponden al cliente dado,retorna null si no se encuentra
+	 * una direccion que coincida con el cliente dado 
+	 */
 	@Override
 	public void seleccionarComoPreferida(DireccionDTO direccion) throws MyException {
 		//creamos una direccion auxiliar para tratarla en el método
@@ -225,6 +232,52 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 			}
 		}
 		
+	}
+
+	
+	/**
+	 * Consulta la direccion preferida de un cliente en la base de datos
+	 * @param cliente ClienteDTO que representa el cliente del cual se desea consultar su direccion preferida
+	 * @return DireccionDTO retorna una direccion que corresponden a la preferida del cliente dado,retorna null si no se encuentra
+	 * una direccion preferida que coincida con el cliente dado 
+	 */
+	@Override
+	public DireccionDTO consultarPreferida(ClienteDTO cliente) throws MyException {
+		// Creamos una direccion para guardar el resultado de la consulta
+				DireccionDTO direccion = new DireccionDTO();
+				// Creamos una instancia de session
+				Session session = null;
+				try {
+					// Se obtiene la session
+					session = getSession();
+					// creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
+					// Añadimos también la restriccion de cliente para retornar lo deseado por el método
+					Criteria criteria = session.createCriteria(DireccionDTO.class)
+							.add(Restrictions.eq("Cliente", cliente.getNumeroDocumento()));
+					//Añadimos la restriccion para tener únicamente la direccion preferida
+					criteria.add(Restrictions.eq("Preferida", Boolean.TRUE));
+					// añadimos a nuestra direccion el resultado de la consulta
+					if(!criteria.list().isEmpty()){
+						direccion = (DireccionDTO) criteria.list().iterator().next();
+					}
+				} catch (HibernateException e) {
+					// Si ocurre alguna excepcion de hibernate se lanza una nueva
+					// excepcion propia
+					throw new MyException(e);
+				} finally {
+					// Por ultimo, si la sesion no es nula se procede a cerrarla
+					if (session != null) {
+						try {
+							session.close();
+						} catch (HibernateException e) {
+							// capturar cualquier exception de hibernate que se pueda
+							// presentar
+							throw new MyException(e);
+						}
+					}
+				}
+				// retorna la direccion preferida
+				return direccion;
 	}
 
 	
