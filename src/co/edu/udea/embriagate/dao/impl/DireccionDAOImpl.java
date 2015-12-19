@@ -20,7 +20,7 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 
 	/**
 	 * Guarda una direccion en la base de datos
-	 * @param direccion objeto de tipo DireccionDTO que representa la direccion que se guardar√° en la base de datos
+	 * @param direccion objeto de tipo DireccionDTO que representa la direccion que se guardar√É¬° en la base de datos
 	 * @return void 
 	 */
 	@Override
@@ -56,7 +56,7 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 	}
 
 	/**
-	 * Elimina de manera lÛgica una direccion de la base de datos
+	 * Elimina de manera l√≥gica una direccion de la base de datos
 	 * @param direccion DireccionDTO que representa la direccion que se desea eliminar
 	 * @return void
 	 */
@@ -145,10 +145,10 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 			// Se obtiene la session
 			session = getSession();
 			// creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			// AÒadimos tambiÈn la restriccion de cliente para retornar lo deseado por el mÈtodo
+			// A√±adimos tambi√©n la restriccion de cliente para retornar lo deseado por el m√©todo
 			Criteria criteria = session.createCriteria(DireccionDTO.class)
 					.add(Restrictions.eq("Cliente", cliente.getNumeroDocumento()));
-			// aÒadimos a nuestra lista el resultado de la consulta
+			// a√±adimos a nuestra lista el resultado de la consulta
 			direcciones = criteria.list();
 		} catch (HibernateException e) {
 			// Si ocurre alguna excepcion de hibernate se lanza una nueva
@@ -179,7 +179,7 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 	 */
 	@Override
 	public void seleccionarComoPreferida(DireccionDTO direccion) throws MyException {
-		//creamos una direccion auxiliar para tratarla en el mÈtodo
+		//creamos una direccion auxiliar para tratarla en el m√©todo
 		DireccionDTO aux = new DireccionDTO();
 		// Creamos una instancia de session
 		Session session = null;
@@ -187,10 +187,10 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 			// Se obtiene la session
 			session = getSession();
 			// creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			// AÒadimos tambiÈn la restriccion que nos permitir· verificar las direcciones del cliente
+			// A√±adimos tambi√©n la restriccion que nos permitir√° verificar las direcciones del cliente
 			Criteria criteria = session.createCriteria(DireccionDTO.class)
 					.add(Restrictions.eq("Cliente", direccion.getId().getCliente()));
-			//AÒadimos una restriccion adicional
+			//A√±adimos una restriccion adicional
 			criteria.add(Restrictions.eq("Preferida", Boolean.TRUE));
 			//Realizamos un condicional, si la lista es vacia, quiere decir que no hay
 			//Direccion preferida
@@ -200,8 +200,8 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 				//Realizamos la modificacion en la base de datos
 				this.modificar(direccion);
 			}else{
-				//Si la lista no est· vacia
-				//nuestra variable auxiliar ser· el primer item de la lista del Criteria
+				//Si la lista no est√° vacia
+				//nuestra variable auxiliar ser√° el primer item de la lista del Criteria
 				aux = (DireccionDTO) criteria.list().iterator().next();
 				//Si las direcciones son iguales, no es necesario realizar alguna modificacion
 				//Si las direcciones son diferentes
@@ -251,12 +251,12 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 					// Se obtiene la session
 					session = getSession();
 					// creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-					// AÒadimos tambiÈn la restriccion de cliente para retornar lo deseado por el mÈtodo
+					// A√±adimos tambi√©n la restriccion de cliente para retornar lo deseado por el m√©todo
 					Criteria criteria = session.createCriteria(DireccionDTO.class)
 							.add(Restrictions.eq("Cliente", cliente.getNumeroDocumento()));
-					//AÒadimos la restriccion para tener ˙nicamente la direccion preferida
+					//A√±adimos la restriccion para tener √∫nicamente la direccion preferida
 					criteria.add(Restrictions.eq("Preferida", Boolean.TRUE));
-					// aÒadimos a nuestra direccion el resultado de la consulta
+					// a√±adimos a nuestra direccion el resultado de la consulta
 					if(!criteria.list().isEmpty()){
 						direccion = (DireccionDTO) criteria.list().iterator().next();
 					}
@@ -279,7 +279,5 @@ public class DireccionDAOImpl extends HibernateDaoSupport implements DireccionDA
 				// retorna la direccion preferida
 				return direccion;
 	}
-
-	
 
 }

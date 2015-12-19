@@ -11,7 +11,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/produccion"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="wondercode1402"></property>
+		<property name="password" value="Tuxteno"></property>
 	</bean>
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
@@ -42,6 +42,30 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="ClienteDAO" class="co.edu.udea.embriagate.dao.impl.ClienteDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="CompraDAO" class="co.edu.udea.embriagate.dao.impl.CompraDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="DireccionDAO" class="co.edu.udea.embriagate.dao.impl.DireccionDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="LicoresDAO" class="co.edu.udea.embriagate.dao.impl.LicoresDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="LicoresPorCompraDAO" class="co.edu.udea.embriagate.dao.impl.LicoresPorCompraDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="LicoresPorVentaDAO" class="co.edu.udea.embriagate.dao.impl.LicoresPorVentaDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="RolDAO" class="co.edu.udea.embriagate.dao.impl.RolDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="UsuarioDAO" class="co.edu.udea.embriagate.dao.impl.UsuarioDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="VentaDAO" class="co.edu.udea.embriagate.dao.impl.VentaDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 </beans>

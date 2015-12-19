@@ -1,8 +1,13 @@
 package co.edu.udea.embriagate.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.embriagate.dao.ClienteDAO;
@@ -96,7 +101,7 @@ public class ClienteDAOImpl extends HibernateDaoSupport implements ClienteDAO{
 					session=getSession();
 					//se inicia una transaccion 
 					Transaction tx=session.beginTransaction();
-					//Se procede a actualizar el cliente, como es borrado lógico, basta con actualizarlo
+					//Se procede a actualizar el cliente en base de datos, ya que es solo un borrado logico
 					session.update(cliente);
 					//se hace el commit de la transaccion
 					tx.commit();
@@ -140,4 +145,30 @@ public class ClienteDAOImpl extends HibernateDaoSupport implements ClienteDAO{
 		return cliente;
 	}
 
+	/**
+	 * Consulta todos lo clientes activos en el sistema
+	 * @return List<ClienteDTO> retorna una lista con los clientes activos registrados en el sistema
+	 */
+	@Override
+	public List<ClienteDTO> consultarActivos() throws MyException {
+		List<ClienteDTO> clientes = new ArrayList<ClienteDTO>();
+		Session session = null;
+		try{
+			session = getSession();
+			//Con esta criteria y con las restricciones de la misma solo obtenemos los usuarios que estan activos
+			Criteria criteria = session.createCriteria(ClienteDTO.class).add(Restrictions.eq("eliminado",false));
+			clientes = criteria.list();
+		}catch(HibernateException e){
+			throw new MyException(e);
+		}finally{
+			if(session != null){
+				try{
+					session.close();
+				}catch(HibernateException e){
+					throw new MyException(e);
+				}
+			}
+		}
+		return clientes;
+	}
 }

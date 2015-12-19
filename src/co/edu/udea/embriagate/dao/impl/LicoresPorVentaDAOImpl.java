@@ -20,7 +20,7 @@ public class LicoresPorVentaDAOImpl extends HibernateDaoSupport implements Licor
 
 	/**
 	 * Guarda un licorPorVenta en la base de datos
-	 * @param licor objeto de tipo LicoresPorVentaDTO que representa al Licor que se guardar√° en la base de datos
+	 * @param licor objeto de tipo LicoresPorVentaDTO que representa al Licor que se guardar√É¬° en la base de datos
 	 * @return void 
 	 */
 	@Override
@@ -70,10 +70,10 @@ public class LicoresPorVentaDAOImpl extends HibernateDaoSupport implements Licor
 			//Se obtiene la session
 			session = getSession();
 			//creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			//AÒadimos tambiÈn la restriccion de venta para retornar lo deseado por el mÈtodo
+			//A√±adimos tambi√©n la restriccion de venta para retornar lo deseado por el m√©todo
 			Criteria criteria = session.createCriteria(LicoresPorVentaDTO.class)
 					.add(Restrictions.eq("Venta", venta.getNumeroVenta()));
-			//aÒadimos a nuestra lista el resultado de la consulta
+			//a√±adimos a nuestra lista el resultado de la consulta
 			licores = criteria.list();
 		} catch (HibernateException e) {
 			//Si ocurre alguna excepcion de hibernate se lanza una nueva excepcion propia
@@ -110,10 +110,10 @@ public class LicoresPorVentaDAOImpl extends HibernateDaoSupport implements Licor
 			//Se obtiene la session
 			session = getSession();
 			//creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			//AÒadimos tambiÈn la restriccion de licor para retornar lo deseado por el mÈtodo
+			//A√±adimos tambi√©n la restriccion de licor para retornar lo deseado por el m√©todo
 			Criteria criteria = session.createCriteria(LicoresPorVentaDTO.class)
 					.add(Restrictions.eq("Licor", licor.getCodigo()));
-			//aÒadimos a nuestra lista el resultado de la consulta
+			//a√±adimos a nuestra lista el resultado de la consulta
 			licores = criteria.list();
 		} catch (HibernateException e) {
 			//Si ocurre alguna excepcion de hibernate se lanza una nueva excepcion propia

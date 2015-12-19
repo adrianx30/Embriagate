@@ -19,13 +19,13 @@ import co.edu.udea.embriagate.exception.MyException;
  * Clase que implementa todas las operaciones que se pueden hacer sobre la tabla Licores
  * @author William Molina
  * @author Adrian Jimenez
- * @author Rafael PatiÃ±o
+ * @author Rafael PatiÃƒÂ±o
  */
 public class LicoresDAOImpl extends HibernateDaoSupport implements LicoresDAO{
 
 	/**
 	 * Guarda un licor en la base de datos
-	 * @param cliente objeto de tipo LicoresDTO que representa al Licor que se guardarÃ¡ en la base de datos
+	 * @param cliente objeto de tipo LicoresDTO que representa al Licor que se guardarÃƒÂ¡ en la base de datos
 	 * @return void 
 	 */
 	@Override
@@ -75,10 +75,10 @@ public class LicoresDAOImpl extends HibernateDaoSupport implements LicoresDAO{
 			//Se obtiene la session
 			session = getSession();
 			//creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			//Añadimos también la restriccion de fabricante para retornar lo deseado por el método
+			//AÃ±adimos tambiÃ©n la restriccion de fabricante para retornar lo deseado por el mÃ©todo
 			Criteria criteria = session.createCriteria(LicoresDTO.class)
 					.add(Restrictions.eq("Fabricante", fabricante));
-			//añadimos a nuestra lista el resultado de la consulta
+			//aÃ±adimos a nuestra lista el resultado de la consulta
 			licores = criteria.list();
 		}catch(HibernateException e){
 			//Si ocurre alguna excepcion de hibernate se lanza una nueva excepcion propia
@@ -100,10 +100,10 @@ public class LicoresDAOImpl extends HibernateDaoSupport implements LicoresDAO{
 
 	
 	/**
-	 * Consulta los licores de la base de datos dado su añejamiento
-	 * @param añejamiento entero que representa el añejamiento de los licores que se desea consultar
-	 * @return LicoresDTO retorna una lista de Licores que corresponden al añejamiento dado, retorna null si no se encuentra
-	 * un licor que coincida con el añejamiento dado 
+	 * Consulta los licores de la base de datos dado su aÃ±ejamiento
+	 * @param aÃ±ejamiento entero que representa el aÃ±ejamiento de los licores que se desea consultar
+	 * @return LicoresDTO retorna una lista de Licores que corresponden al aÃ±ejamiento dado, retorna null si no se encuentra
+	 * un licor que coincida con el aÃ±ejamiento dado 
 	 */
 	@Override
 	public List<LicoresDTO> obtenerPorAñejamiento(int añejamiento) throws MyException {
@@ -115,10 +115,10 @@ public class LicoresDAOImpl extends HibernateDaoSupport implements LicoresDAO{
 			//Se obtiene la session
 			session = getSession();
 			//creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			//Añadimos también la restriccion de añejamiento para retornar lo deseado por el método
+			//AÃ±adimos tambiÃ©n la restriccion de aÃ±ejamiento para retornar lo deseado por el mÃ©todo
 			Criteria criteria = session.createCriteria(LicoresDTO.class)
 					.add(Restrictions.eq("Añejamiento", añejamiento));
-			//añadimos a nuestra lista el resultado de la consulta
+			//aÃ±adimos a nuestra lista el resultado de la consulta
 			licores = criteria.list();
 		}catch(HibernateException e){
 			//Si ocurre alguna excepcion de hibernate se lanza una nueva excepcion propia
@@ -139,10 +139,10 @@ public class LicoresDAOImpl extends HibernateDaoSupport implements LicoresDAO{
 	}
 	
 	/**
-	 * Consulta los licores de la base de datos dado un rango de añejamiento
-	 * @param desde, hasta enteros que representan el rango de añejamiento de los licores que se desea consultar
-	 * @return LicoresDTO retorna una lista de Licores que corresponden al añejamiento dado, retorna null si no se encuentra
-	 * un licor que coincida con el añejamiento dado 
+	 * Consulta los licores de la base de datos dado un rango de aÃ±ejamiento
+	 * @param desde, hasta enteros que representan el rango de aÃ±ejamiento de los licores que se desea consultar
+	 * @return LicoresDTO retorna una lista de Licores que corresponden al aÃ±ejamiento dado, retorna null si no se encuentra
+	 * un licor que coincida con el aÃ±ejamiento dado 
 	 */
 	@Override
 	public List<LicoresDTO> obtenerPorAñejamiento(int desde, int hasta) throws MyException {
@@ -154,10 +154,10 @@ public class LicoresDAOImpl extends HibernateDaoSupport implements LicoresDAO{
 			//Se obtiene la session
 			session = getSession();
 			//creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			//Añadimos también la restriccion de añejamiento para retornar lo deseado por el método
+			//AÃ±adimos tambiÃ©n la restriccion de aÃ±ejamiento para retornar lo deseado por el mÃ©todo
 			Criteria criteria = session.createCriteria(LicoresDTO.class)
 					.add(Restrictions.between("Añejamiento", desde, hasta));
-			//añadimos a nuestra lista el resultado de la consulta
+			//aÃ±adimos a nuestra lista el resultado de la consulta
 			licores = criteria.list();
 		}catch(HibernateException e){
 			//Si ocurre alguna excepcion de hibernate se lanza una nueva excepcion propia
@@ -193,10 +193,10 @@ public class LicoresDAOImpl extends HibernateDaoSupport implements LicoresDAO{
 			//Se obtiene la session
 			session = getSession();
 			//creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			//Añadimos también la restriccion de stock para retornar lo deseado por el método
+			//AÃ±adimos tambiÃ©n la restriccion de stock para retornar lo deseado por el mÃ©todo
 			Criteria criteria = session.createCriteria(LicoresDTO.class)
 					.add(Restrictions.ge("Existencias", stock));
-			//añadimos a nuestra lista el resultado de la consulta
+			//aÃ±adimos a nuestra lista el resultado de la consulta
 			licores = criteria.list();
 		}catch(HibernateException e){
 			//Si ocurre alguna excepcion de hibernate se lanza una nueva excepcion propia
@@ -233,10 +233,10 @@ public class LicoresDAOImpl extends HibernateDaoSupport implements LicoresDAO{
 			//Se obtiene la session
 			session = getSession();
 			//creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
-			//Añadimos también la restriccion de stock para retornar lo deseado por el método
+			//AÃ±adimos tambiÃ©n la restriccion de stock para retornar lo deseado por el mÃ©todo
 			Criteria criteria = session.createCriteria(LicoresDTO.class)
 					.add(Restrictions.eq("TipoLicores", tipo.getCodigo()));
-			//añadimos a nuestra lista el resultado de la consulta
+			//aÃ±adimos a nuestra lista el resultado de la consulta
 			licores = criteria.list();
 		}catch(HibernateException e){
 			//Si ocurre alguna excepcion de hibernate se lanza una nueva excepcion propia

@@ -31,7 +31,7 @@ public class RolDAOImpl extends HibernateDaoSupport implements RolDAO {
 			session = getSession();
 			//creamos una instancia Criteria que es donde se obtienen los resultados de la consulta
 			Criteria criteria = session.createCriteria(RolDTO.class);
-			//añadimos a nuestra lista el resultado de la consulta
+			//aÃ±adimos a nuestra lista el resultado de la consulta
 			lista = criteria.list();
 		} catch (HibernateException e) {
 			//Si ocurre alguna excepcion de hibernate se lanza una nueva excepcion propia
